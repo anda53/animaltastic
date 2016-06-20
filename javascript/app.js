@@ -42,31 +42,20 @@
 
 	                	// add an attribute to img's and change it's animat/still state on click
 				$("img").on('click' , function(){
-					console.log("clicked");
 
-				var state=$(this).data('state');
-			    if(state==='still'){
-			    	$(this).data('state', 'animate');
-			    	var animateURL= $(this).data('animate');
-			    	$(this).attr('src', animateURL);
-			    }else{
-			    	$(this).data('state', 'still');
-			    	var stillURL=$(this).data('still');
-			    	$(this).attr('src', stillURL);
-			    	console.log(stillURL);
-			    
+					var state=$(this).data('state');
+				    if(state==='animate'){
+				    	$(this).data('state', 'still');
+				    	var stillURL= $(this).data('still');
+				    	$(this).attr('src', stillURL);
+				    }else{
+				    	$(this).data('state', 'animate');
+				    	var animateURL=$(this).data('animate');
+				    	$(this).attr('src', animateURL);
 
-
-			    }
-					
-
-		 
-		
-
-
-				})	
-
-                	// add an attribute to img's and change it's animat/still state on click
+				    }
+				
+				})	        
 
 			}
 
@@ -85,10 +74,9 @@
 		$('#buttonsView').empty();
 		// Loops through the array of animals
 		for (var i = 0; i < animalsArray.length; i++){
-			// Then dynamicaly generates buttons for each animalin the array
-			// Note the jQUery syntax here... 
-		    var a = $('<button>') // This code $('<button>') is all jQuery needs to create the beginning and end tag. (<button></button>)
-		    a.addClass('animal'); // Added a class ***
+		
+		    var a = $('<button>') 
+		    a.addClass('animal'); 
 		    a.attr('data-name', animalsArray[i]); // Added a data-attribute
 		    a.text(animalsArray[i]); // Provided the initial button text
 		    $('#buttonsView').append(a); // Added the button to the HTML
