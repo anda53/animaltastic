@@ -29,33 +29,46 @@
                    text: results[i].rating  //get the rating for that particular index of result and insert text in ptag
                 });
                   var animalImage = $('<img>', {  //create an image tag for gif ***this is what needs to change to still 
-                   src: results[i].images.fixed_width.url,  
-                   'data-animate': results[i].images.fixed_width.url, 
-                   'data-static' : results[i].images.fixed_width_still.url, //this is not connecting
-                   'data-state': results[i].images.fixed_width_still.url
+                   src: results[i].images.fixed_width.url,	                   
+	                // "data-animate" : results[i].images.fixed_width.url,
+	                "data-static" : results[i].images.fixed_width_still.url,
+	            	class:'freeze'
 
-                });
+	               	   
+                  });
 
                 animalDiv.append(p);
                 animalDiv.append(animalImage);
                 $('#animalsView').prepend(animalDiv);
 
-	                	// add an attribute to img's and change it's animat/still state on click
-				$("img").on('click' , function(){
+	                	
 
-					var state=$(this).data('state');
-				    if(state==='animate'){
-				    	$(this).data('state', 'still');
-				    	var stillURL= $(this).data('still');
-				    	$(this).attr('src', stillURL);
-				    }else{
-				    	$(this).data('state', 'animate');
-				    	var animateURL=$(this).data('animate');
-				    	$(this).attr('src', animateURL);
 
-				    }
+	            $(document).on('click', function(){
+	            
+	            	if(animalImage.src == "results[i].images.fixed_width.url"){
+	            		// alert("working");
+	            		animalImage.src = 'results[i].images.fixed_width_still.url';
+	            	}else{
+	            		animalImage.src = "results[i].images.fixed_width.url";
+	            	}
+	            })
+
+				// $(document).on('click' , function(){
+
+				// 	var state=$(this).data('state');
+				//     if(state==='animate'){
+				//     	$(this).data('state', 'static');
+				//     	var stillURL= $(this).data('static');
+				//     	$(this).attr('src', stillURL);
+				//     }else{
+				//     	$(this).data('state', 'animate');
+				//     	var animateURL=$(this).data('animate');
+				//     	$(this).attr('src', animateURL);
+
+				//     }
 				
-				})	        
+				// })	        
 
 			}
 
